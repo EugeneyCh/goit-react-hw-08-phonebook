@@ -1,4 +1,37 @@
+h2 {
+  text-align: center;
+}
+span {
+  width: 150px;
+}
 .contactRow {
+  max-width: 70%;
   display: flex;
-  gap: 15px;
+  justify-content: space-between;
+  /* gap: 15px; */
+}
+
+.contactRow {
+  display: flex; /* Використовуємо Flexbox */
+  justify-content: space-between; /* Рівномірне розташування елементів у рядку */
+  align-items: center; /* Вирівнювання елементів по вертикалі */
+  margin-bottom: 10px; /* Відступ між рядками */
+}
+.deleteButton:hover {
+  background-color: #ff3f3f; /* Колір фону кнопки при наведенні */
+}
+/* Додайте стилі для кнопки delete */
+.deleteButton {
+  background-color: #ff6b6b;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+/* Стилі для піктограмки корзинки */
+.deleteIcon {
+  margin-right: 5px;
 }

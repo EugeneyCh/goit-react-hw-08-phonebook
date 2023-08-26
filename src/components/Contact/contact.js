@@ -31,11 +31,11 @@ function Contact() {
   // };
 
   const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
+    if (contacts) {
+      return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter)
+      );
+    }
   };
 
   const visibleContact = getVisibleContacts();
@@ -45,14 +45,27 @@ function Contact() {
   if (error) {
     return 'Error' + error;
   }
-  return visibleContact.map(({ id, name, phone }) => (
-    <li key={id} className={css.contactRow}>
-      {name} : {phone}
-      <button type="button" onClick={() => handleDeleteContact(id)}>
-        Delete
-      </button>
-    </li>
-  ));
+  return (
+    <>
+      {visibleContact ? (
+        visibleContact.map(({ id, name, number }) => (
+          <li key={id} className={css.contactRow}>
+            <span>{name}</span>
+            <span>{number}</span>
+            <button
+              type="button"
+              className={css.deleteButton}
+              onClick={() => handleDeleteContact(id)}
+            >
+              Delete
+            </button>
+          </li>
+        ))
+      ) : (
+        <p>No contacts to display.</p>
+      )}
+    </>
+  );
 }
 
 export default Contact;

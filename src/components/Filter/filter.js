@@ -12,7 +12,9 @@ function Filter() {
   const dispatch = useDispatch();
 
   const saveFilterQuery = filter => {
-    dispatch(updateFilter((filter = filterQueryRef.current.value.trim())));
+    dispatch(
+      updateFilter((filter = filterQueryRef.current.value.trim().toLowerCase()))
+    );
   };
 
   return (

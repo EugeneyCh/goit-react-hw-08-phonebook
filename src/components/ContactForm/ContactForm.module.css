@@ -1,10 +1,11 @@
 .formEditor {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 60%;
   padding: 15px;
   border: 1px solid black;
+  margin: 0 auto;
 }
 
 .formEditor label {
@@ -12,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   width: 80%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 .inputArea {
