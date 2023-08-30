@@ -1,23 +1,36 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from 'components/hooks/useAuth';
-import css from './Navigation.module.css';
+// import { useAuth } from 'components/hooks/useAuth';
+// import css from './Navigation.module.css';
+import styled from '@emotion/styled';
+import { Box } from '@mui/material';
 
+const StyledLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: #e84a5f;
+  }
+`;
+
+const NavigationBox = styled(Box)({
+  display: 'flex',
+  justifyContent: 'end',
+  margin: '10px',
+  gap: '12px',
+  fontWeight: '700',
+  color: '#2a363b',
+});
 export const Navigation = () => {
-  const { isLoggedIn } = useAuth;
+  // const { isLoggedIn } = useAuth;
 
   return (
-    <nav>
-      <NavLink className={css.link} to="/">
-        Home
-      </NavLink>
-      {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
-          Contacts
-        </NavLink>
-      )}
-    </nav>
+    <NavigationBox component="nav">
+      <StyledLink to="/register">Register</StyledLink>
+      <StyledLink to="/Login">Log In</StyledLink>
+    </NavigationBox>
   );
 };
+
 // const { NavLink } = require('react-router-dom');
 
 // const styles = {

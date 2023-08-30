@@ -7,7 +7,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/goit-react-hw-08-Phonebook">
       <App />
     </BrowserRouter>
   </Provider>

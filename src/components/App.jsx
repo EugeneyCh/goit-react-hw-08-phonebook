@@ -15,14 +15,15 @@ const Contacts = lazy(() => import('./pages/ContactsView'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isrefreshing } = useAuth();
+  const { isRefreshing } = useAuth();
+  console.log('Is refreshing is...', isRefreshing);
 
   useEffect(() => {
     dispatch(authOperations.refreshUser());
   }, [dispatch]);
 
   return (
-    !isrefreshing && (
+    !isRefreshing && (
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
