@@ -45,12 +45,10 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   const { token } = thunkAPI.getState().auth;
-  // console.log('Old token is...', token);
 
   if (!token) {
     return thunkAPI.rejectWithValue('No valid token');
   }
-  // console.log('Refreshing User...');
   tokenQuery.set(token);
   try {
     const { data } = await axios.get('/users/current');
@@ -60,7 +58,6 @@ const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   }
 });
 
-// const operations
 const authOperations = {
   register,
   logIn,

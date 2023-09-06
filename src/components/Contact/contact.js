@@ -8,9 +8,11 @@ import {
 } from 'redux/users/selectors';
 import { deleteContact } from 'redux/users/slice';
 import Loader from 'components/Loader/loader';
-import css from './Contact.module.css';
+// import css from './Contact.module.css';
 
 import { deleteContactFromDB } from 'redux/users/operations';
+import { Box, Button, Typography } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Contact() {
   // const { contacts, filter, isLoading } = useSelector(getContacts);
@@ -49,17 +51,40 @@ function Contact() {
     <>
       {visibleContact ? (
         visibleContact.map(({ id, name, number }) => (
-          <li key={id} className={css.contactRow}>
-            <span>{name}</span>
-            <span>{number}</span>
-            <button
+          <Box
+            component="li"
+            key={id}
+            sx={{
+              display: 'flex',
+              justifyContent: ' space-between',
+              alignItems: 'center',
+              // maxWidth: ' 70%',
+              marginBottom: '10px',
+            }}
+          >
+            <Typography sx={{ width: '150px' }}>{name}</Typography>
+            <Typography sx={{ width: '150px' }}>{number}</Typography>
+            <Button
+              variant="contained"
+              endIcon={<DeleteIcon />}
               type="button"
-              className={css.deleteButton}
               onClick={() => handleDeleteContact(id)}
+              sx={{ bgcolor: '#2c87a5' }}
             >
               Delete
-            </button>
-          </li>
+            </Button>
+          </Box>
+          // <li key={id} className={css.contactRow}>
+          //   <span>{name}</span>
+          //   <span>{number}</span>
+          //   <button
+          //     type="button"
+          //     className={css.deleteButton}
+          //     onClick={() => handleDeleteContact(id)}
+          //   >
+          //     Delete
+          //   </button>
+          // </li>
         ))
       ) : (
         <p>No contacts to display.</p>

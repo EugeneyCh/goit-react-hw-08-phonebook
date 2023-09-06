@@ -4,7 +4,6 @@ import { Layout } from './Layout';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import { useAuth } from './hooks/useAuth';
-// import { refreshUser } from 'redux/auth/auth-operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 
@@ -16,7 +15,6 @@ const Contacts = lazy(() => import('./pages/ContactsView'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  console.log('Is refreshing is...', isRefreshing);
 
   useEffect(() => {
     dispatch(authOperations.refreshUser());
@@ -32,7 +30,7 @@ export const App = () => {
             element={
               <RestrictedRoute
                 component={RegisterPage}
-                redirectTo="/register"
+                redirectTo="/contacts"
               />
             }
           />
@@ -51,53 +49,3 @@ export const App = () => {
     )
   );
 };
-
-// import React, { Suspense, useEffect } from 'react';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { fetchContacts } from 'redux/users/operations';
-// import ContactForm from './ContactForm/contactForm';
-// import Contact from './Contact/contact';
-// import ListContacts from './ListContacts/listContact';
-// import Filter from './Filter/filter';
-// import AppBar from './UserMenu/AppBar';
-
-// import css from './App.module.css';
-
-// const App = () => {
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-
-//   return (
-//     <div className={css.container}>
-//       <Suspense
-//         fallback={
-//           <div>
-//             {/* <Loader /> */}
-//             Loading ...
-//           </div>
-//         }
-//       >
-//         <AppBar />
-
-//         <h1>Phonebook</h1>
-//         <Router>
-//           <Route path="/contacts" component={ListContacts} />
-//           <Route path="/" exact>
-//             <ContactForm />
-//             <div className={css.contactList}>
-//               <h2>Contacts</h2>
-//               <Filter />
-//               <ListContacts children={<Contact />} />
-//             </div>
-//           </Route>
-//         </Router>
-//       </Suspense>
-//     </div>
-//   );
-// };
-
-// export default App;

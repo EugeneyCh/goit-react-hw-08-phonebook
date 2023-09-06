@@ -1,26 +1,20 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh-50px)',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { Container, Typography } from '@mui/material';
+import backgroundImage from '../images/background.jpg';
 
 const HomeView = () => {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>
-        Welcome page of our service
-        <span role="img" aria-label="Greeting icon ">
-          🤗
-        </span>
-      </h1>
-    </div>
+    <Container
+      sx={{
+        textAlign: 'center',
+        minHeight: '100vh',
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+      }}
+    >
+      <Typography variant="h4" component="h1" sx={{ pt: '40px' }}>
+        Welcome to our service
+      </Typography>
+    </Container>
   );
 };
 

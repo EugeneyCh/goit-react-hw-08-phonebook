@@ -12,5 +12,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </Provider>
 );
-
-//  basename = '/goit-react-hw-08-Phonebook';

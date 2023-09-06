@@ -2,9 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts } from './operations';
 
 const contactsSlice = createSlice({
-  // Ім'я слайсу
   name: 'phonebook',
-  // Початковий стан редюсера слайсу
   initialState: {
     contacts: {
       items: [],
@@ -14,7 +12,6 @@ const contactsSlice = createSlice({
     filter: '',
   },
 
-  // Об'єкт редюсерів
   reducers: {
     addContact: (state, action) => {
       state.contacts.items = [...state.contacts.items, action.payload];
@@ -29,7 +26,6 @@ const contactsSlice = createSlice({
     },
   },
 
-  // Обробка  зовнішніх екшенів
   extraReducers: {
     [fetchContacts.pending]: state => {
       state.contacts.isLoading = true;
@@ -46,11 +42,7 @@ const contactsSlice = createSlice({
   },
 });
 
-// console.log(contactsSlice);
-
-// Генератори екшенів
 export const { addContact, deleteContact, updateFilter } =
   contactsSlice.actions;
-// Редюсер слайсу
 
 export const contactsReducer = contactsSlice.reducer;

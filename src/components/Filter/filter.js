@@ -1,27 +1,27 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from 'redux/users/selectors';
+import { useDispatch } from 'react-redux';
 import { updateFilter } from 'redux/users/slice';
-import React, { useRef } from 'react';
-
-import css from './Filter.module.css';
+import React from 'react';
+import { TextField } from '@mui/material';
 
 function Filter() {
-  const filter = useSelector(getFilter);
-  console.log('Filter search is...', filter);
-  const filterQueryRef = useRef();
   const dispatch = useDispatch();
 
-  const saveFilterQuery = filter => {
-    dispatch(
-      updateFilter((filter = filterQueryRef.current.value.trim().toLowerCase()))
-    );
+  const saveFilterQuery = event => {
+    const filterQuery = event.target.value;
+    dispatch(updateFilter(filterQuery.trim().toLowerCase()));
   };
 
   return (
-    <label className={css.findZone}>
-      Find contacts by name
-      <input ref={filterQueryRef} type="text" onChange={saveFilterQuery} />
-    </label>
+    <>
+      <TextField
+        id="outlined-basic"
+        fullWidth
+        label="Find contacts by name"
+        variant="outlined"
+        type="text"
+        onChange={saveFilterQuery}
+      />
+    </>
   );
 }
 
