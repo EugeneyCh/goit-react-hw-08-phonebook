@@ -26,7 +26,7 @@ export const UserMenu = () => {
         onClick={() => dispatch(authOperations.logOut())}
         sx={{ bgcolor: '#2c87a5' }}
       >
-        LogoutF
+        Logout
       </Button>
     </Box>
   );
